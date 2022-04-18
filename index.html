@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://kit.fontawesome.com/41323b41f6.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&amp;display=swap" rel="stylesheet">
+    <title>To-Do List</title>
 </head>
 <body>
-    
+    <section class="toDoContainer">
+        <h1>To-Do List</h1>
+        <div class="inputBox">
+            <input type="text" placeholder="Add new task">
+            <button><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="listBox">
+            <ul class="todoList">
+                <li>Read a new book <span><i class="fa-solid fa-trash-can"></i></span></li>
+                <li>Go to the market <span><i class="fa-solid fa-trash-can"></i></span></li>
+                <li>Study English <span><i class="fa-solid fa-trash-can"></i></span></li>
+            </ul>
+        </div>
+        <div class="footerBox">
+            <span>You have 3 pedding tasks</span>
+            <button>Clear All</button>
+        </div>
+    </section>
 </body>
 </html>
