@@ -30,7 +30,7 @@ const insertList = () => {
 
 const updatePeddingTasks = () => {
     const dataBase = getLocalStorage()
-    peddingTasks.innerHTML = `You have ${dataBase.length} pedding tasks`
+    peddingTasks.innerHTML = `Você tem ${dataBase.length} tarefas pendentes.`
     setLocalStorage(dataBase)
 }
 

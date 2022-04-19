@@ -18,8 +18,13 @@ body{
 }
 .toDoContainer h1{
     font-size: 26px;
+    color: #262626;
     font-weight: 400;
     padding: 0 0 15px;
+}
+.fa-list-check{
+    margin-right: 10px;
+    color: #262626;
 }
 .inputBox{
     display: flex;
