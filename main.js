@@ -1,9 +1,9 @@
 const inputText = document.querySelector('#inputText')
 const todoList = document.querySelector('#todoList')
-
+const peddingTasks = document.querySelector('#peddingTasks')
+ 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('todoList')) ?? []
 const setLocalStorage = (database) => localStorage.setItem('todoList', JSON.stringify(database))
-
 
 const createElement = (task, index) =>{
     let listItem = `
@@ -28,6 +28,12 @@ const insertList = () => {
         clearInput()
 }
 
+const updatePeddingTasks = () => {
+    const dataBase = getLocalStorage()
+    peddingTasks.innerHTML = `You have ${dataBase.length} pedding tasks`
+    setLocalStorage(dataBase)
+}
+
 const clearInput = () => {
     inputText.value = ''
 }
@@ -49,11 +55,13 @@ const updateList = () => {
     clearLastChildList()
     const dataBase = getLocalStorage()
     dataBase.forEach((item,index) => createElement(item.task, index)) //o banco está sendo lido e passado para a função createElement
+    setLocalStorage(dataBase)
+    updatePeddingTasks()
 }
 
-const removeItemList = (index) => {
+const removeItemList = (indice) => {
     const dataBase = getLocalStorage()
-    dataBase.splice(index,1)
+    dataBase.splice(indice,1)
     setLocalStorage(dataBase)
     updateList()
 }
