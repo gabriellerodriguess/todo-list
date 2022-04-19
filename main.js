@@ -1,19 +1,18 @@
 const btnAdd = document.querySelector('#btnAdd')
 const inputText = document.querySelector('#inputText').value
+const todoList = document.querySelector('#todoList')
 
 let banco = [
     {'tarefa':'Estudar'},
-    {'tarefa':'Assistir'},
-    {'tarefa':'fazer compras'}
+    {'tarefa':'Comprar'},
+    {'tarefa':'Assistir tv'}
 ]
 
 const createElement = (tarefa) =>{
-    const item = document.createElement("li")
-    item.innerHTML = `
+    let listItem = `
     <li>${tarefa}<span><i class="fa-solid fa-trash-can"></i></span></li>
     `
-    document.querySelector('#todoList').appendChild(item
-    )
+    todoList.innerHTML += listItem
 }
 
 const atualizaTela = () => {
