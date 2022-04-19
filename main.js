@@ -5,9 +5,13 @@ let dataBase = [
     {'tarefa':'Estudar'},
 ]
 
-const createElement = (tarefa) =>{
+const createElement = (tarefa, indice) =>{
     let listItem = `
-    <li>${tarefa}<span><i class="fa-solid fa-trash-can"></i></span></li>
+    <li data-indice=${indice}>${tarefa}
+        <span data-indice=${indice}>
+            <i class="fa-solid fa-trash-can"></i>
+        </span>
+    </li>
     `
     todoList.innerHTML += listItem
 }
@@ -35,8 +39,14 @@ const clearAllList = () => {
 
 const updateList = () => {
     clearItemList()
-    dataBase.forEach(item => createElement(item.tarefa)) //o banco está sendo lido e passado para a função createElement
+    dataBase.forEach(( item,indice) => createElement(item.tarefa, indice)) //o banco está sendo lido e passado para a função createElement
 }
 
+const clickItem = (evento) => {
+    const elemento = evento.target
+    console.log(elemento)
+}
+
+todoList.addEventListener('click', clickItem)
 document.querySelector('#btnAdd').addEventListener('click', () => insertList())
 document.querySelector('#btnClear').addEventListener('click', () => clearAllList())
