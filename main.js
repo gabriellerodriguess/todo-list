@@ -1,11 +1,8 @@
-const inputText = document.querySelector('#inputText').value
 const todoList = document.querySelector('#todoList')
 
 
 let dataBase = [
     {'tarefa':'Estudar'},
-    {'tarefa':'Comprar'},
-    {'tarefa':'Assistir tv'}
 ]
 
 const createElement = (tarefa) =>{
@@ -16,17 +13,30 @@ const createElement = (tarefa) =>{
 }
 
 const insertList = () => {
+        let inputText = document.querySelector('#inputText').value
+        if(inputText.length != 0){
+            dataBase.push({'tarefa': `${inputText}`})
+            updateList()  
+        } else{
+            alert('Digite uma tarefa.') //criar um snackbar para aparecer o erro
+        }
+       
 }
 
-const clearList = () => {
+const clearItemList = () => {
+    while(todoList.firstChild){
+        todoList.removeChild(todoList.lastChild)
+    }
+}
+
+const clearAllList = () => {
     todoList.innerHTML = ''
 }
 
 const updateList = () => {
+    clearItemList()
     dataBase.forEach(item => createElement(item.tarefa)) //o banco está sendo lido e passado para a função createElement
 }
+
 document.querySelector('#btnAdd').addEventListener('click', () => insertList())
-document.querySelector('#btnClear').addEventListener('click', () => clearList())
-
-updateList()
-
+document.querySelector('#btnClear').addEventListener('click', () => clearAllList())
