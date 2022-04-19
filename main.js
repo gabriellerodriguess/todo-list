@@ -1,8 +1,8 @@
-const btnAdd = document.querySelector('#btnAdd')
 const inputText = document.querySelector('#inputText').value
 const todoList = document.querySelector('#todoList')
 
-let banco = [
+
+let dataBase = [
     {'tarefa':'Estudar'},
     {'tarefa':'Comprar'},
     {'tarefa':'Assistir tv'}
@@ -15,8 +15,18 @@ const createElement = (tarefa) =>{
     todoList.innerHTML += listItem
 }
 
-const atualizaTela = () => {
-    banco.forEach(item => createElement(item.tarefa)) //o banco está sendo lido e passado para a função createElement
+const insertList = () => {
 }
 
-atualizaTela()
+const clearList = () => {
+    todoList.innerHTML = ''
+}
+
+const updateList = () => {
+    dataBase.forEach(item => createElement(item.tarefa)) //o banco está sendo lido e passado para a função createElement
+}
+document.querySelector('#btnAdd').addEventListener('click', () => insertList())
+document.querySelector('#btnClear').addEventListener('click', () => clearList())
+
+updateList()
+
