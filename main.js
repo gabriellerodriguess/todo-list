@@ -74,7 +74,13 @@ const iconRemove = (event) => {
     }  
 }
 
+// const inputEnter = (event) => {
+//     const key = event.key
+//     console.log(key)
+// }
 
 todoList.onclick = iconRemove
+// document.querySelector('#inputText').addEventListener('keypress', inputEnter)
 document.querySelector('#btnAdd').addEventListener('click', () => insertList())
 document.querySelector('#btnClear').addEventListener('click', () => clearAllList())
+updateList()
