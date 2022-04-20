@@ -101,3 +101,18 @@ body{
     border-radius: 3px;
     cursor: pointer;
 }
+
+.snackbar{
+    display: block;
+    position: fixed;
+    min-width: 250px;
+    bottom: 15px;
+    left: 125px;
+    right: 125px;
+    padding: 10px;
+    background-color: #E95D5D;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+

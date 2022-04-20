@@ -1,7 +1,7 @@
 const inputText = document.querySelector('#inputText')
 const todoList = document.querySelector('#todoList')
 const peddingTasks = document.querySelector('#peddingTasks')
- 
+const snackbarAlert = document.querySelector('#snackbar')
 const getLocalStorage = () => JSON.parse(localStorage.getItem('todoList')) ?? []
 const setLocalStorage = (database) => localStorage.setItem('todoList', JSON.stringify(database))
 
@@ -15,6 +15,17 @@ const createElement = (task, index) =>{
     `
     todoList.innerHTML += listItem
 }
+const createAlert = (mensage) => {
+    const alert = 
+    `<div class="snackbar">
+         <i class="fa-solid fa-triangle-exclamation"></i>
+            ${mensage}
+     </div>`
+    snackbarAlert.innerHTML = alert
+    setTimeout(function () {
+        snackbarAlert.innerHTML = ''
+    }, 4000)
+}
 
 const inputEnter = (event) => {
     const key = event.keyCode
@@ -24,13 +35,14 @@ const inputEnter = (event) => {
 }
 
 const insertList = () => {
+    let mensage = 'Digite uma tarefa!'
     if(inputText.value.length != 0){
         const dataBase = getLocalStorage()
         dataBase.push({'task': `${inputText.value}`})
         setLocalStorage(dataBase)
         updateList()
     } else{
-        alert('Digite uma tarefa.') //criar um snackbar para aparecer o erro
+        createAlert(mensage) //criar um snackbar para aparecer o erro
     }    
     clearInput()
 }
@@ -52,13 +64,15 @@ const clearLastChildList = () => {
 }
 
 const clearAllList = (index) => {
+    let mensage = 'Não pode apagar uma lista vazia!'
     const dataBase = getLocalStorage()
     if(dataBase.length != 0){
         dataBase.splice(index)
         setLocalStorage(dataBase)
         updateList()
     } else {
-        alert('Não pode apagar uma lista vazia!')
+        createAlert(mensage)
+        // alert('Não pode apagar uma lista vazia!') //criar um snackbar para aparecer o erro.
     }
   
 }
