@@ -16,16 +16,23 @@ const createElement = (task, index) =>{
     todoList.innerHTML += listItem
 }
 
+const inputEnter = (event) => {
+    const key = event.keyCode
+    if(key === 13){
+        insertList()
+    }
+}
+
 const insertList = () => {
-        if(inputText.value.length != 0){
-            const dataBase = getLocalStorage()
-            dataBase.push({'task': `${inputText.value}`})
-            setLocalStorage(dataBase)
-            updateList()  
-        } else{
-            alert('Digite uma tarefa.') //criar um snackbar para aparecer o erro
-        }    
-        clearInput()
+    if(inputText.value.length != 0){
+        const dataBase = getLocalStorage()
+        dataBase.push({'task': `${inputText.value}`})
+        setLocalStorage(dataBase)
+        updateList()
+    } else{
+        alert('Digite uma tarefa.') //criar um snackbar para aparecer o erro
+    }    
+    clearInput()
 }
 
 const updatePeddingTasks = () => {
@@ -46,9 +53,14 @@ const clearLastChildList = () => {
 
 const clearAllList = (index) => {
     const dataBase = getLocalStorage()
-    dataBase.splice(index)
-    setLocalStorage(dataBase)
-    updateList()
+    if(dataBase.length != 0){
+        dataBase.splice(index)
+        setLocalStorage(dataBase)
+        updateList()
+    } else {
+        alert('Não pode apagar uma lista vazia!')
+    }
+  
 }
 
 const updateList = () => {
@@ -74,13 +86,10 @@ const iconRemove = (event) => {
     }  
 }
 
-// const inputEnter = (event) => {
-//     const key = event.key
-//     console.log(key)
-// }
+
 
 todoList.onclick = iconRemove
-// document.querySelector('#inputText').addEventListener('keypress', inputEnter)
+inputText.addEventListener('keypress', inputEnter)
 document.querySelector('#btnAdd').addEventListener('click', () => insertList())
 document.querySelector('#btnClear').addEventListener('click', () => clearAllList())
 updateList()
